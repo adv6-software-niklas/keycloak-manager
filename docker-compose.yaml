@@ -1,0 +1,6 @@
+version: "3"
+
+services:
+  keycloak-manager:
+    image: mrneedhelp/adv6keycloak-manager:latest
+    ports: "8081:8081"
