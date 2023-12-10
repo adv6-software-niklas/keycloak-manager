@@ -15,4 +15,4 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          docker run -p 8081:8081 mrneedhelp/adv6gui:latest
+          docker run -p 8081:8081 mrneedhelp/adv6keycloak-manager:latest
