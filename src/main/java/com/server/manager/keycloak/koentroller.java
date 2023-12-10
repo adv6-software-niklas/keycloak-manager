@@ -3,7 +3,7 @@ package com.server.manager.keycloak;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/koentroller")
+// @RequestMapping("/koentroller")
 public class koentroller {
    private keycloaktestrealm test = new keycloaktestrealm();
 
@@ -24,8 +24,8 @@ public class koentroller {
         return ("dang");
     }
 
-    @PostMapping("/getAll")
-    public String addContact(@RequestBody String contact) {
+    @GetMapping("/getAll")
+    public String addContact() {
         return "qwrttttyh";
     }
 }
