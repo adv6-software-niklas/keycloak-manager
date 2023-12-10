@@ -41,4 +41,4 @@ jobs:
     needs: BuildAndPushContainer
     steps:
       -  name: Deploy Local machine docker container
-         run: docker run -p 8081:8081 mrneedhelp/adv6keycloak-manager:latest
+         run: docker run -p 8081:8081 -d mrneedhelp/adv6keycloak-manager:latest
