@@ -1,13 +1,13 @@
 name: Deploy to Localhost
-
+#test
 on:
   push:
     branches:
       - main
-
+#1
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Windows, X64]
 
     steps:
       - name: Checkout code
@@ -15,4 +15,4 @@ jobs:
 
       - name: Start Docker Compose
         run: |
-          docker run -p 8081:8081 mrneedhelp/adv6keycloak-manager:latest
+          docker run -p 8081:8081 -d mrneedhelp/adv6keycloak-manager:latest
