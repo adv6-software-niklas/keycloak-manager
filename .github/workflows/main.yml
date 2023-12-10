@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: DESKTOP-0VH0HIK-KC-Manager
 
     steps:
       - name: Checkout code
