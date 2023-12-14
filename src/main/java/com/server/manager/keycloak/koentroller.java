@@ -26,6 +26,6 @@ public class koentroller {
 
     @GetMapping("/getAll")
     public String addContact() {
-        return "Gaat dit werken?";
+        return "Gaat dit werken v2.0?";
     }
 }
