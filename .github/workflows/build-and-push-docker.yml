@@ -37,7 +37,7 @@ jobs:
       - name: Docker Setup Buildx
         uses: docker/setup-buildx-action@v3.0.0
       - name: Build Docker image
-        run: docker build /build/dockerfile
+        run: docker build build/dockerfile
       - name: Push image to registry
         run: docker push mrneedhelp/adv6keycloak-manager:latest
 
