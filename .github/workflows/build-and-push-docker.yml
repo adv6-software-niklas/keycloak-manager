@@ -27,10 +27,15 @@ jobs:
     steps:
       - name: Get artifact
         uses: actions/download-artifact@v3
+        with:
+          name: Build
+          Path: build
+      - name: Unzip artifact
+        run: zip -r Build.zip build/
       - name: DockerHub Login
         run: docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image
-        run: docker build ./ -t mrneedhelp/adv6keycloak-manager:latest
+        run: docker build ./build -t mrneedhelp/adv6keycloak-manager:latest
       - name: Push image to registry
         run: docker push mrneedhelp/adv6keycloak-manager:latest
 
