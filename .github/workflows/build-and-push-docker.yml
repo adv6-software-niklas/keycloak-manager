@@ -47,7 +47,7 @@ jobs:
       - name: DockerHub Login
         run: docker login --username ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker image
-        run: docker build . -t mrneedhelp/adv6keycloak-manager:latest
+        run: docker build ./ -t mrneedhelp/adv6keycloak-manager:latest
       - name: Push image to registry
         run: docker push mrneedhelp/adv6keycloak-manager:latest
 
