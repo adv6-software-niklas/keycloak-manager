@@ -3,7 +3,7 @@ on:
     branches:
     - main
 jobs:
-  BuildApp:
+  Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -13,17 +13,17 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: Build maven app
       run: mvn -B package --file pom.xml
-    - name: Upload artifact baby
+    - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
           name: Build
           path: ./*
 
-  BuildAndPushContainer:
+  Staging:
     runs-on: ubuntu-latest
-    needs: BuildApp
+    needs: Build
     steps:
       - name: Get artifact
         uses: actions/download-artifact@v3
@@ -40,7 +40,9 @@ jobs:
           
   Deploy:
     runs-on: [self-hosted, Windows, X64]
-    needs: BuildAndPushContainer
+    needs: Staging
     steps:
-      -  name: Deploy Local machine docker container
-         run: docker pull mrneedhelp/adv6keycloak-manager:latest -and docker run -p 8081:8081 -d mrneedhelp/adv6keycloak-manager:latest
+      -  name: Pull image
+         run: docker pull mrneedhelp/adv6keycloak-manager:latest
+      -  name: Run image
+         run: docker run -p 8081:8081 -d mrneedhelp/adv6keycloak-manager:latest
