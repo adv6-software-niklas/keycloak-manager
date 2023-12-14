@@ -37,9 +37,10 @@ jobs:
         with:
           push: true
           tags: mrneedhelp/adv6keycloak-manager:latest
+          
   Deploy:
     runs-on: [self-hosted, Windows, X64]
     needs: BuildAndPushContainer
     steps:
       -  name: Deploy Local machine docker container
-         run: docker pull mrneedhelp/adv6keycloak-manager:latest && docker run -p 8081:8081 -d mrneedhelp/adv6keycloak-manager:latest
+         run: docker pull mrneedhelp/adv6keycloak-manager:latest -and docker run -p 8081:8081 -d mrneedhelp/adv6keycloak-manager:latest
