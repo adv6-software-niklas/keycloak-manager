@@ -42,7 +42,7 @@ jobs:
         cache: maven
         
     -  name: Sonar scan
-       run: cd build && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${{ secrets.PROJECT_KEY }}
+       run: cd build && mvn -B verify org.sonarsource.scanner.maven:sonar -Dsonar.projectKey=${{ secrets.PROJECT_KEY }}
        
         
 
