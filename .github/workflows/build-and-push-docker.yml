@@ -28,7 +28,7 @@ jobs:
     -  name: Get artifact
        uses: actions/download-artifact@v3
        with:
-          name: Buil
+          name: Build
           Path: build
        
     -  name: Unzip artifact
