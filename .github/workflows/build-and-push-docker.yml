@@ -48,7 +48,7 @@ jobs:
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        run: |
           cd build && mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=${{ secrets.PROJECT_KEY }} \
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=${{ secrets.SONAR_KEY }}
         
