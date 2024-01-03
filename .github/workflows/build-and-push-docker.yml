@@ -35,15 +35,7 @@ jobs:
        run: zip -r Build.zip build/
 
     -  name: Sonar scan
-       uses: SonarSource/sonarcloud-github-action@49e6cd3b187936a73b8280d59ffd9da69df63ec9
-       with:
-         projectBaseDir: build/
-         args: >
-           -Dsonar.projectKey= ${{ secrets.SONAR_PROJECT_KEY }}
-           -Dsonar.organization= ${{ secrets.SONAR_KEY }}
-       env:
-         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${{ secrets.PROJECT_KEY }}
        
         
 
