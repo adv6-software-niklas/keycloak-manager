@@ -44,6 +44,7 @@ jobs:
     -  name: Sonar scan
        #run: cd build && mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${{ secrets.PROJECT_KEY }}
        env:
+         GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        run: |
           cd build && mvn clean verify sonar:sonar \
