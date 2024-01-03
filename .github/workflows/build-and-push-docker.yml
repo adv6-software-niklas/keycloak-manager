@@ -43,12 +43,13 @@ jobs:
         
     -  name: Sonar scan
        #run: cd build && mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=${{ secrets.PROJECT_KEY }}
+       env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        run: |
           cd build && mvn clean verify sonar:sonar \
             -Dsonar.projectKey=${{ secrets.PROJECT_KEY }} \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=${{ secrets.SONAR_KEY }} \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.organization=${{ secrets.SONAR_KEY }}
         
 
   Staging:
