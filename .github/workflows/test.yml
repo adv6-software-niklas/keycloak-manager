@@ -9,9 +9,11 @@ jobs:
     steps:
     - name: Build PostgreSQL
       run: docker run -d -e POSTGRES_USER=mysecretuser -e POSTGRES_PASSWORD=mysecretpassword -p 5431:5432 postgres
+          &&touch applications.properties
           &&echo "spring.datasource.url=jdbc:postgresql://172.69.0.15:5432/mysecretuser" > application.properties
           &&echo "spring.datasource.username=mysecretuser" >> application.properties
           &&echo "spring.datasource.password=mysecretpassword" >> application.properties
           &&echo "" >> application.properties
           &&echo "spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect" >> application.properties
           &&echo "spring.jpa.hibernate.ddl-auto=create" >> application.properties
+          &&cat applications.properties
