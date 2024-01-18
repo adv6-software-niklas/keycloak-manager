@@ -21,3 +21,5 @@ jobs:
           echo "" >> application.properties
           echo "spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect" >> application.properties
           echo "spring.jpa.hibernate.ddl-auto=create" >> application.properties
+      - name: Read and display application.properties file
+        run: cat application.properties
