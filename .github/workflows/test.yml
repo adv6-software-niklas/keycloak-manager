@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Build PostgreSQL
-      run: docker run -e POSTGRES_USER=mysecretuser -e POSTGRES_PASSWORD=mysecretpassword -p 5431:5432 postgres
+      run: docker run -d -e POSTGRES_USER=mysecretuser -e POSTGRES_PASSWORD=mysecretpassword -p 5431:5432 postgres
