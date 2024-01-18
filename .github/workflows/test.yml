@@ -1,13 +1,23 @@
 on:
   push:
     branches:
-    - main
+      - main
 
 jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-    - name: Build PostgreSQL
-      run: docker run -d -e POSTGRES_USER=mysecretuser -e POSTGRES_PASSWORD=mysecretpassword -p 5431:5432 postgres
-    - name: check if docker is running postgres
-      run: docker ps
+      - name: Build PostgreSQL
+        run: docker run -d -e POSTGRES_USER=mysecretuser -e POSTGRES_PASSWORD=mysecretpassword -p 5431:5432 postgres
+      - name: Wait for PostgreSQL to start
+        run: sleep 10s  # Adjust the sleep duration based on your container startup time
+      - name: Check if Docker is running PostgreSQL
+        run: docker ps
+      - name: Create application.properties file
+        run: |
+          echo "spring.datasource.url=jdbc:postgresql://172.69.0.15:5432/mysecretuser" > application.properties
+          echo "spring.datasource.username=mysecretuser" >> application.properties
+          echo "spring.datasource.password=mysecretpassword" >> application.properties
+          echo "" >> application.properties
+          echo "spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect" >> application.properties
+          echo "spring.jpa.hibernate.ddl-auto=create" >> application.properties
